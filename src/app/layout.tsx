@@ -48,19 +48,19 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${site.url}/logo-optica.jpg`,
+        url: "https://optica-loja.vercel.app/logo-optica.jpg",
         width: 150,
         height: 150,
-        alt: site.name,
+        alt: "Óptica Loja",
         type: "image/jpeg",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Óptica Loja | Lentes ZEISS y salud visual en Loja",
     description: "Óptica y centro de diagnóstico visual en Loja: examen visual, lentes ZEISS, terapia visual para estrabismo y atención oftalmológica.",
-    images: [`${site.url}/logo-optica.jpg`],
+    images: ["https://optica-loja.vercel.app/logo-optica.jpg"],
   },
 };
 
