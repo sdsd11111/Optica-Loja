@@ -1,0 +1,50 @@
+  5000 | Bajo     | óptica
+  5000 | Medio    | lentes
+  5000 | Bajo     | lentes de contacto
+  5000 | Medio    | gafas
+  5000 | Bajo     | estrabismo
+  5000 | Bajo     | oftalmología
+  5000 | Alto     | gafas de sol
+  5000 | Bajo     | opticas cerca de mi
+  5000 | Alto     | gafas ray ban
+  5000 | Alto     | gafas oakley
+  5000 | Bajo     | oftalmologia
+  5000 | Medio    | lentes fotocromaticos
+  5000 | Bajo     | opticas gmo
+  5000 | Medio    | gafas de seguridad
+  5000 | Medio    | lentes fotocromaticas
+  5000 | Medio    | lentes fotocromáticos
+  5000 | Bajo     | ópticas gmo
+  5000 | Bajo     | óptica gmo
+  5000 | Bajo     | gafas brasileñas
+  5000 | Bajo     | oftalmologica
+  5000 | Bajo     | lentes de conta
+  5000 | Bajo     | conjuntivitis
+  5000 | Bajo     | optometria
+  5000 | Bajo     | optometra
+  5000 | Bajo     | 0ptometria
+  5000 | Bajo     | derrame en ojos
+  5000 | Bajo     | ojos azul
+  5000 | Bajo     | ojos con orzuelos
+  5000 | Bajo     | astigmatismo
+  5000 | Bajo     | astigmatismo con miopia
+  5000 | Bajo     | astigmatismo es
+  5000 | Bajo     | es el astigmatismo
+  5000 | Bajo     | miopia astigmatismo y
+   500 | Bajo     | examen de la vista
+   500 | Bajo     | clínica oftalmológica
+   500 | Bajo     | lentillas
+   500 | Medio    | lentes de sol
+   500 | Alto     | gafas de sol hombre
+   500 | Alto     | lentes ray ban
+   500 | Alto     | gafas de sol mujer
+   500 | Alto     | lentes prada
+   500 | Bajo     | lentes de contacto de color
+   500 | Alto     | lentes oakley
+   500 | Alto     | gafas prada
+   500 | Bajo     | lentes de contacto con aumento
+   500 | Alto     | gafas ray ban mujer
+   500 | Alto     | lentes ray ban hombre
+   500 | Alto     | gafas versace
+   500 | Alto     | gafas ray ban hombre
+   500 | Alto     | lentes ray ban mujer

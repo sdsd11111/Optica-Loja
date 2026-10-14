@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 850" width="100%" height="100%" style="background-color: #0b1120; font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065f46" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#831843" />
+      <stop offset="100%" stop-color="#e11d48" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-opacity="0.4" flood-color="#000000"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#f43f5e"/>
+    </marker>
+  </defs>
+
+  <!-- TITULO PRINCIPAL -->
+  <text x="550" y="45" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="800" letter-spacing="1">ARQUITECTURA WEB Y EMBUDO DE CONVERSIÓN — ÓPTICA LOJA</text>
+  <text x="550" y="72" text-anchor="middle" fill="#94a3b8" font-size="13">Ecosistema de 8 páginas optimizadas para captación local, provincial y Google Reviews</text>
+
+  <!-- HOME (CENTRO SUPERIOR) -->
+  <g transform="translate(325, 110)" filter="url(#shadow)">
+    <rect width="450" height="110" rx="14" fill="url(#primaryGrad)" stroke="#38bdf8" stroke-width="2"/>
+    <text x="225" y="38" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="bold">🏠 HOME / PÁGINA PRINCIPAL</text>
+    <text x="225" y="62" text-anchor="middle" fill="#bae6fd" font-size="13">Autoridad: ZEISS Vision Expert + Ubicación Loja</text>
+    <text x="225" y="86" text-anchor="middle" fill="#e0f2fe" font-size="12" font-weight="600">📍 Cobertura Provincial: Zamora, Yantzaza, Catamayo, Saraguro</text>
+  </g>
+
+  <!-- SISTEMA DE REPUTACIÓN (IZQUIERDA Y DERECHA DE HOME) -->
+  <!-- 5 ESTRELLAS -->
+  <g transform="translate(40, 115)" filter="url(#shadow)">
+    <rect width="240" height="95" rx="12" fill="url(#greenGrad)" stroke="#34d399" stroke-width="1.5"/>
+    <text x="120" y="34" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">⭐ 5 Estrellas (Excelente)</text>
+    <text x="120" y="58" text-anchor="middle" fill="#d1fae5" font-size="12">Redirige automáticamente a:</text>
+    <text x="120" y="78" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold">Google Maps Reviews ↗</text>
+  </g>
+  <path d="M 325 162 L 285 162" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+
+  <!-- 1-4 ESTRELLAS -->
+  <g transform="translate(820, 115)" filter="url(#shadow)">
+    <rect width="240" height="95" rx="12" fill="url(#redGrad)" stroke="#f43f5e" stroke-width="1.5"/>
+    <text x="120" y="34" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="bold">⭐ 1 a 4 Estrellas (Quejas)</text>
+    <text x="120" y="58" text-anchor="middle" fill="#ffe4e6" font-size="12">Filtro interno de atención:</text>
+    <text x="120" y="78" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold">WhatsApp Privado Fernando ↗</text>
+  </g>
+  <path d="M 775 162 L 815 162" stroke="#f43f5e" stroke-width="2.5" marker-end="url(#arrow-red)"/>
+
+  <!-- CONEXIÓN DE HOME A GRID DE SERVICIOS -->
+  <path d="M 550 220 L 550 270" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- GRID DE 8 PÁGINAS DE SERVICIOS -->
+  
+  <!-- Fila 1 -->
+  <!-- 1. Examen Visual -->
+  <g transform="translate(40, 280)" filter="url(#shadow)">
+    <rect width="230" height="130" rx="10" fill="url(#cardGrad)" stroke="#0284c7" stroke-width="1.5"/>
+    <text x="115" y="30" text-anchor="middle" fill="#38bdf8" font-size="15" font-weight="bold">👁️ Examen Visual</text>
+    <text x="115" y="52" text-anchor="middle" fill="#94a3b8" font-size="12">/examen-visual-loja</text>
+    <rect x="25" y="65" width="180" height="22" rx="4" fill="#0369a1" />
+    <text x="115" y="80" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">🔥 34,500 búsquedas/mes</text>
+    <text x="115" y="110" text-anchor="middle" fill="#cbd5e1" font-size="11">Gratis con compra de lentes</text>
+  </g>
+
+  <!-- 2. Lentes de Contacto -->
+  <g transform="translate(300, 280)" filter="url(#shadow)">
+    <rect width="230" height="130" rx="10" fill="url(#cardGrad)" stroke="#10b981" stroke-width="2"/>
+    <text x="115" y="30" text-anchor="middle" fill="#34d399" font-size="15" font-weight="bold">🔍 Lentes de Contacto</text>
+    <text x="115" y="52" text-anchor="middle" fill="#94a3b8" font-size="12">/lentes-de-contacto-loja</text>
+    <rect x="25" y="65" width="180" height="22" rx="4" fill="#047857" />
+    <text x="115" y="80" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">🚀 65,500 búsquedas/mes</text>
+    <text x="115" y="110" text-anchor="middle" fill="#cbd5e1" font-size="11">Graduados, color, tóricos</text>
+  </g>
+
+  <!-- 3. Centro Oftalmológico -->
+  <g transform="translate(560, 280)" filter="url(#shadow)">
+    <rect width="230" height="130" rx="10" fill="url(#cardGrad)" stroke="#0284c7" stroke-width="1.5"/>
+    <text x="115" y="30" text-anchor="middle" fill="#38bdf8" font-size="15" font-weight="bold">🏥 Centro Oftalmológico</text>
+    <text x="115" y="52" text-anchor="middle" fill="#94a3b8" font-size="12">/centro-oftalmologico-loja</text>
+    <rect x="25" y="65" width="180" height="22" rx="4" fill="#1e3a8a" />
+    <text x="115" y="80" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="bold">📈 12,100 búsquedas/mes</text>
+    <text x="115" y="110" text-anchor="middle" fill="#cbd5e1" font-size="11">Patologías, glaucoma, catarata</text>
+  </g>
+
+  <!-- 4. Armazones -->
+  <g transform="translate(820, 280)" filter="url(#shadow)">
+    <rect width="230" height="130" rx="10" fill="url(#cardGrad)" stroke="#0284c7" stroke-width="1.5"/>
+    <text x="115" y="30" text-anchor="middle" fill="#38bdf8" font-size="15" font-weight="bold">👓 Armazones y Lunas</text>
+    <text x="115" y="52" text-anchor="middle" fill="#94a3b8" font-size="12">/armazones-lentes-loja</text>
+    <rect x="25" y="65" width="180" height="22" rx="4" fill="#0369a1" />
+    <text x="115" y="80" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">🔥 27,100 búsquedas/mes</text>
+    <text x="115" y="110" text-anchor="middle" fill="#cbd5e1" font-size="11">Moda, marcas, Blue Defense</text>
+  </g>
+
+  <!-- Fila 2 -->
+  <!-- 5. Lentes de Sol -->
+  <g transform="translate(40, 440)" filter="url(#shadow)">
+    <rect width="230" height="130" rx="10" fill="url(#cardGrad)" stroke="#0284c7" stroke-width="1.5"/>
+    <text x="115" y="30" text-anchor="middle" fill="#38bdf8" font-size="15" font-weight="bold">☀️ Lentes de Sol</text>
+    <text x="115" y="52" text-anchor="middle" fill="#94a3b8" font-size="12">/lentes-de-sol-loja</text>
+    <rect x="25" y="65" width="180" height="22" rx="4" fill="#1e3a8a" />
+    <text x="115" y="80" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="bold">📊 9,900 búsquedas/mes</text>
+    <text x="115" y="110" text-anchor="middle" fill="#cbd5e1" font-size="11">Polarizados y protección UV</text>
+  </g>
+
+  <!-- 6. Tecnología ZEISS -->
+  <g transform="translate(300, 440)" filter="url(#shadow)">
+    <rect width="230" height="130" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="115" y="30" text-anchor="middle" fill="#38bdf8" font-size="15" font-weight="bold">🔬 Tecnología ZEISS</text>
+    <text x="115" y="52" text-anchor="middle" fill="#94a3b8" font-size="12">/tecnologia-zeiss-loja</text>
+    <rect x="25" y="65" width="180" height="22" rx="4" fill="#0284c7" />
+    <text x="115" y="80" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">⭐ Autoridad Premium</text>
+    <text x="115" y="110" text-anchor="middle" fill="#cbd5e1" font-size="11">Centrado i.Terminal + Precisión</text>
+  </g>
+
+  <!-- 7. Pediatría -->
+  <g transform="translate(560, 440)" filter="url(#shadow)">
+    <rect width="230" height="130" rx="10" fill="url(#cardGrad)" stroke="#0284c7" stroke-width="1.5"/>
+    <text x="115" y="30" text-anchor="middle" fill="#38bdf8" font-size="15" font-weight="bold">👧 Optometría Niños</text>
+    <text x="115" y="52" text-anchor="middle" fill="#94a3b8" font-size="12">/optometria-pediatrica-loja</text>
+    <rect x="25" y="65" width="180" height="22" rx="4" fill="#1e3a8a" />
+    <text x="115" y="80" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="bold">👨‍👩‍👧 Tráfico Familiar</text>
+    <text x="115" y="110" text-anchor="middle" fill="#cbd5e1" font-size="11">Estrabismo, control miopía</text>
+  </g>
+
+  <!-- 8. Urgencias -->
+  <g transform="translate(820, 440)" filter="url(#shadow)">
+    <rect width="230" height="130" rx="10" fill="url(#cardGrad)" stroke="#e11d48" stroke-width="1.5"/>
+    <text x="115" y="30" text-anchor="middle" fill="#fb7185" font-size="15" font-weight="bold">🚨 Urgencias Ópticas</text>
+    <text x="115" y="52" text-anchor="middle" fill="#94a3b8" font-size="12">/urgencias-opticas-loja</text>
+    <rect x="25" y="65" width="180" height="22" rx="4" fill="#9f1239" />
+    <text x="115" y="80" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">⚡ Conversión Inmediata</text>
+    <text x="115" y="110" text-anchor="middle" fill="#cbd5e1" font-size="11">Ojo rojo, cuerpos extraños</text>
+  </g>
+
+  <!-- LINEAS DE INTERCONEXIÓN CRUZADA (SILOS) -->
+  <path d="M 270 345 L 295 345" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)"/>
+  <path d="M 530 345 L 555 345" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)"/>
+  <path d="M 790 345 L 815 345" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)"/>
+  <path d="M 675 410 L 675 435" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)"/>
+  <path d="M 935 410 L 935 435" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)"/>
+
+  <!-- EMBUDO DE CONVERSIÓN FINAL (WHATSAPP FLOTANTE Y AGENDAMIENTO) -->
+  <g transform="translate(250, 640)" filter="url(#shadow)">
+    <rect width="600" height="110" rx="16" fill="url(#greenGrad)" stroke="#34d399" stroke-width="2.5"/>
+    <text x="300" y="38" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="bold">📲 CIERRE: WHATSAPP DIRECTO DE VENTAS Y ATENCIÓN</text>
+    <text x="300" y="64" text-anchor="middle" fill="#d1fae5" font-size="13">Todas las páginas cuentan con botón de WhatsApp flotante + mensaje contextualizado</text>
+    <text x="300" y="88" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="600">Ejemplo: "Hola, deseo agendar mi prueba de lentes de contacto en Óptica Loja..."</text>
+  </g>
+
+  <!-- FLECHAS DE TODAS LAS PÁGINAS A WHATSAPP -->
+  <path d="M 155 570 L 350 640" stroke="#34d399" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <path d="M 415 570 L 480 640" stroke="#34d399" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <path d="M 675 570 L 620 640" stroke="#34d399" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <path d="M 935 570 L 750 640" stroke="#34d399" stroke-width="2" marker-end="url(#arrow-green)"/>
+
+  <!-- PIE DE PAGINA -->
+  <text x="550" y="810" text-anchor="middle" fill="#64748b" font-size="12">Desarrollado para Óptica Loja © 2026 • Arquitectura alineada al plan de 8 páginas y planificador de palabras clave</text>
+</svg>
