@@ -5,7 +5,7 @@
 export const site = {
   name: "Óptica Loja",
   tagline: "Lo mejor para tus ojos",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://opticaloja.com.ec").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://optica-loja.vercel.app").replace(/\/$/, ""),
 
   // VERIFICAR: teléfonos tomados de una captura de Instagram parcialmente cortada.
   phone: "072 586217",

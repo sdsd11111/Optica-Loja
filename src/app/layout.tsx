@@ -46,13 +46,21 @@ export const metadata: Metadata = {
     siteName: site.name,
     locale: "es_EC",
     type: "website",
-    images: [{ url: "/logo-optica.jpg", alt: site.name }],
+    images: [
+      {
+        url: `${site.url}/logo-optica.jpg`,
+        width: 150,
+        height: 150,
+        alt: site.name,
+        type: "image/jpeg",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Óptica Loja | Lentes ZEISS y salud visual en Loja",
     description: "Óptica y centro de diagnóstico visual en Loja: examen visual, lentes ZEISS, terapia visual para estrabismo y atención oftalmológica.",
-    images: ["/logo-optica.jpg"],
+    images: [`${site.url}/logo-optica.jpg`],
   },
 };
 

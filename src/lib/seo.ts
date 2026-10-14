@@ -17,8 +17,16 @@ export function buildMeta({ title, description, path, type = "website", absolute
       siteName: site.name,
       locale: "es_EC",
       type,
-      images: [{ url: "/logo-optica.jpg", alt: site.name }],
+      images: [
+        {
+          url: `${site.url}/logo-optica.jpg`,
+          width: 150,
+          height: 150,
+          alt: site.name,
+          type: "image/jpeg",
+        },
+      ],
     },
-    twitter: { card: "summary_large_image", title: fullTitle, description, images: ["/logo-optica.jpg"] },
+    twitter: { card: "summary_large_image", title: fullTitle, description, images: [`${site.url}/logo-optica.jpg`] },
   };
 }
