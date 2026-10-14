@@ -1,4 +1,3 @@
-ontinuemos
 /**
  * Catálogo central de todas las páginas de servicios para la sección "Sigue leyendo".
  * Cada entrada tiene imagen real, ruta, badge, título, descripción corta y botón.
