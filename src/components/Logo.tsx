@@ -4,7 +4,7 @@ export function Logo({ height = 48 }: { height?: number }) {
   return (
     <div className="logo-brand flex items-center justify-center">
       <img
-        src="/logo-optica-sin-fondo-clean.png"
+        src="/Logo-svg.svg"
         alt="Óptica Loja - ¡Lo mejor para tus ojos!"
         style={{
           height: `${height}px`,

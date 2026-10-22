@@ -98,8 +98,16 @@ function Alert() {
 }
 
 export function Visual({ kind }: { kind: VisualKey }) {
-  const map = { exam: Exam, retina: Retina, lens: LensV, align: Align, alert: Alert } as const;
-  const C = map[kind];
+  const map: Record<VisualKey, () => React.JSX.Element> = {
+    exam: Exam,
+    retina: Retina,
+    lens: LensV,
+    align: Align,
+    alert: Alert,
+    lab: LensV,
+    products: LensV,
+  };
+  const C = map[kind] ?? LensV;
   return (
     <div className="visual">
       <C />

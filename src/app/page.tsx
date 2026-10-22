@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { HeroLensWrapper } from "@/components/HeroLensWrapper";
+/**
+ * HeroSlider: slider de imágenes full-width inspirado en gmo.com.ec.
+ * Reemplaza al HeroLensWrapper (efecto de lente de optotipos).
+ * El HeroLensWrapper se conserva en HeroOptotypeLensBg.tsx como componente
+ * reutilizable para usos futuros.
+ */
+import { HeroSlider } from "@/components/HeroSlider";
+import { HeroActionStrip } from "@/components/HeroActionStrip";
 import { AboutCollage } from "@/components/AboutCollage";
 import { VideoSection } from "@/components/VideoSection";
 import { ServicesGrid } from "@/components/ServicesGrid";
@@ -19,61 +26,11 @@ export const metadata: Metadata = buildMeta({
 export default function Home() {
   return (
     <>
-      {/* ── 1. HERO ── */}
-      <section className="hero-clean">
-        <HeroLensWrapper>
-          <div className="wrap wrap--narrow center">
-            <div className="hero-clean__badge">
-              <span className="dot-pulse" />
-              <span>ZEISS VISION EXPERT • CLÍNICA &amp; ÓPTICA FAMILIAR</span>
-            </div>
+      {/* ── 1. HERO SLIDER LIMPIO (Estilo GMO) ── */}
+      <HeroSlider />
 
-            <h1 className="hero-clean__title">
-              La Mejor Óptica de Loja
-            </h1>
-
-            <p className="hero-clean__lead">
-              Más de 25 años priorizando la salud visual a largo plazo de cada paciente: diagnóstico médico exhaustivo, tecnología alemana ZEISS y soluciones ópticas duraderas para proteger tus ojos por encima de todo.
-            </p>
-
-            <div className="hero-clean__actions">
-              <a
-                className="btn btn--primary"
-                href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hola Óptica Loja, quiero agendar mi examen visual.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Agendar cita por WhatsApp
-              </a>
-              <a className="btn btn--ghost" href="#servicios">
-                Ver especialidades
-              </a>
-            </div>
-
-            <div className="hero-clean__metrics">
-              <div className="metric-pill">
-                <strong>{site.rating.value} ★</strong>
-                <span>Google Maps ({site.rating.count} reseñas)</span>
-              </div>
-              <div className="metric-divider" />
-              <div className="metric-pill">
-                <strong>ZEISS</strong>
-                <span>Centro de Certificación Oficial</span>
-              </div>
-            </div>
-
-            {/* Flecha interactiva para invitar a bajar a la siguiente sección */}
-            <div className="hero-scroll-cue">
-              <a href="#nosotros" aria-label="Bajar a conocer más sobre Óptica Loja" className="hero-scroll-btn">
-                <span className="hero-scroll-label">Conoce nuestra historia</span>
-                <svg className="hero-scroll-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 5v14M19 12l-7 7-7-7" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </HeroLensWrapper>
-      </section>
+      {/* ── 1.1 BARRA HORIZONTAL CON H1, GANCHO Y BOTÓN (Solapada al hero) ── */}
+      <HeroActionStrip />
 
       {/* ── 2. QUIÉNES SOMOS (Entra desde la izquierda) ── */}
       <div data-reveal="left">

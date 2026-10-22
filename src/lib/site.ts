@@ -53,12 +53,12 @@ export const waLink = (text: string) =>
   `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
 
 export const nav = [
-  { href: "/examen-visual-loja", label: "Examen visual" },
-  { href: "/lentes-de-contacto-loja", label: "Lentes de contacto" },
-  { href: "/centro-oftalmologico-loja", label: "Diagnóstico" },
-  { href: "/lentes-zeiss-loja", label: "Lentes ZEISS" },
-  { href: "/terapia-visual-estrabismo-loja", label: "Terapia visual" },
-  { href: "/urgencias-oculares-loja", label: "Urgencias" },
-  { href: "/dr-fernando-lomas", label: "Opt. Lomas" },
+  { href: "/examen-visual-loja",              label: "Examen visual" },
+  { href: "/centro-oftalmologico-loja",        label: "Diagnóstico oftalmológico" },
+  { href: "/terapia-visual-estrabismo-loja",   label: "Terapia visual" },
+  { href: "/laboratorio-optico-loja",          label: "Lentes y laboratorio" },
+  { href: "/lentes-de-contacto-loja",         label: "Lentes de contacto" },
+  { href: "/productos-opticos-loja",           label: "Productos ópticos" },
+  { href: "/sobre-nosotros",                   label: "Sobre nosotros" },
   // Blog oculto por ahora
 ];
