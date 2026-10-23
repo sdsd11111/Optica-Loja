@@ -40,27 +40,27 @@ export const metadata: Metadata = {
     apple: "/favicon.ico",
   },
   openGraph: {
-    title: "Óptica Loja | Lentes ZEISS y salud visual en Loja",
-    description: "Óptica y centro de diagnóstico visual en Loja: examen visual, lentes ZEISS, terapia visual para estrabismo y atención oftalmológica.",
+    title: "Óptica Loja | Lentes ZEISS · Examen Visual · Diagnóstico Oftalmológico en Loja",
+    description: "Centro óptico y oftalmológico en Loja, Ecuador. Examen visual completo, lentes alemanes ZEISS, terapia visual, diagnóstico oftalmológico y taller propio. ¡Lo mejor para tus ojos!",
     url: site.url,
     siteName: site.name,
     locale: "es_EC",
     type: "website",
     images: [
       {
-        url: "https://optica-loja.vercel.app/logo-optica.jpg",
-        width: 150,
-        height: 150,
-        alt: "Óptica Loja",
+        url: `${site.url}/logo-optica.jpg`,
+        width: 200,
+        height: 200,
+        alt: "Óptica Loja - Lo mejor para tus ojos",
         type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary",
-    title: "Óptica Loja | Lentes ZEISS y salud visual en Loja",
-    description: "Óptica y centro de diagnóstico visual en Loja: examen visual, lentes ZEISS, terapia visual para estrabismo y atención oftalmológica.",
-    images: ["https://optica-loja.vercel.app/logo-optica.jpg"],
+    title: "Óptica Loja | Lentes ZEISS · Examen Visual · Diagnóstico Oftalmológico en Loja",
+    description: "Centro óptico y oftalmológico en Loja, Ecuador. Examen visual completo, lentes alemanes ZEISS, terapia visual, diagnóstico oftalmológico y taller propio. ¡Lo mejor para tus ojos!",
+    images: [`${site.url}/logo-optica.jpg`],
   },
 };
 
