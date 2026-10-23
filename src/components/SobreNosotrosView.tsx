@@ -53,6 +53,7 @@ const historyCards = [
     desc: "Nacimos en la tradicional calle de los lentes en Loja con el propósito de ofrecer atención visual cálida, cercana y con ética profesional a cada familia lojana.",
     img: "/images/Home/somos-1.jpg",
     badge: "MÁS DE 25 AÑOS",
+    focal: "center 25%",
   },
   {
     year: "Innovación",
@@ -60,6 +61,7 @@ const historyCards = [
     desc: "Incorporamos maquinaria computarizada de autorrefracción y biselado digital para calibrar lunas con exactitud milimétrica sin depender de envíos externos.",
     img: "/images/Home/servicio-lentes-zeiss.jpg",
     badge: "TALLER PROPIO",
+    focal: "center 30%",
   },
   {
     year: "Alianza",
@@ -67,6 +69,7 @@ const historyCards = [
     desc: "Nos consolidamos como referente oficial de tecnología alemana ZEISS en el sur del Ecuador, ofreciendo lunas progresivas y monofocales de máxima gama óptica.",
     img: "/images/marca-personal/optometrista-3-trabajando.jpg",
     badge: "CALIDAD ALEMANA",
+    focal: "center 20%",
   },
   {
     year: "Actualidad",
@@ -74,6 +77,7 @@ const historyCards = [
     desc: "Consolidamos nuestra clínica oftalmológica y optométrica con estudios avanzados de OCT, Pentacam y topografía corneal, liderados por médicos especialistas de la familia.",
     img: "/images/Home/servicio-oftalmologico.jpg",
     badge: "CENTRO INTEGRAL",
+    focal: "center 25%",
   },
 ];
 
@@ -85,6 +89,7 @@ const fullTeam = [
     spec: "Máster en Ciencias de la Visión, examen computarizado, contactología y especialista ZEISS.",
     img: "/images/marca-personal/optometrista-1.jpg",
     badge: "OPTOMETRÍA CLÍNICA",
+    focal: "center 15%",
   },
   {
     name: "Dra. Rosemary Guamán",
@@ -92,6 +97,7 @@ const fullTeam = [
     spec: "Especialista en Glaucoma, control de presión intraocular, polo anterior y evaluación clínica.",
     img: "/images/marca-personal/equipo-2.jpg",
     badge: "OFTALMOLOGÍA",
+    focal: "center 20%",
   },
   {
     name: "Dr. Víctor Lomas",
@@ -99,6 +105,7 @@ const fullTeam = [
     spec: "Cirugía ocular, patologías de retina, vítreo y procedimientos quirúrgicos de alta complejidad.",
     img: "/images/marca-personal/equipo-3.jpg",
     badge: "CIRUGÍA OCULAR",
+    focal: "center 18%",
   },
   {
     name: "Dra. Janet Lomas",
@@ -106,10 +113,14 @@ const fullTeam = [
     spec: "Diagnóstico oftalmológico integral, estudios por imágenes diagnósticas y valoración médica.",
     img: "/images/marca-personal/equipo-4.jpg",
     badge: "DIAGNÓSTICO MÉDICO",
+    focal: "center 20%",
   },
 ];
 
 export function SobreNosotrosView() {
+  /* Estado para acordeón 'Seguir leyendo' en misión (móvil) */
+  const [isMisionExpanded, setIsMisionExpanded] = useState(false);
+
   /* Slider de Pilares con swipe y peek */
   const pillarSliderRef = useRef<HTMLDivElement>(null);
   const [pillarIdx, setPillarIdx] = useState(0);
@@ -188,8 +199,6 @@ export function SobreNosotrosView() {
           <div className="doc-hero__grid">
             {/* Columna Texto */}
             <div className="doc-hero__info" data-reveal="right">
-              <Breadcrumbs items={[{ name: "Sobre Nosotros" }]} />
-
               <span className="eyebrow-accent">
                 <span className="dot-pulse" /> HISTORIA &amp; COMPROMISO LOCAL
               </span>
@@ -290,7 +299,8 @@ export function SobreNosotrosView() {
               <p className="doc-working-desc">
                 En un mercado saturado de promociones comerciales agresivas, en Óptica Loja creemos que la salud ocular no es una transacción rápida. Es un proceso médico y humano que requiere tiempo, tecnología calibrada y seguimiento continuo.
               </p>
-              <ul className="doc-working-bullets">
+
+              <ul className={`doc-working-bullets ${isMisionExpanded ? "is-expanded-mobile" : ""}`}>
                 <li>
                   <strong>Diagnóstico integral bajo un mismo techo:</strong> Si tu visión necesita más que un lente, contamos con exámenes médicos de OCT y Pentacam en nuestro centro de diagnóstico.
                 </li>
@@ -301,6 +311,16 @@ export function SobreNosotrosView() {
                   <strong>Calidad garantizada y respaldo familiar:</strong> Dos generaciones de profesionales dedicadas con vocación a cuidar los ojos de niños, jóvenes y adultos de Loja.
                 </li>
               </ul>
+
+              <button
+                type="button"
+                className="doc-mision-toggle-btn"
+                onClick={() => setIsMisionExpanded(!isMisionExpanded)}
+                aria-expanded={isMisionExpanded}
+              >
+                <span>{isMisionExpanded ? "Ver menos ▲" : "Seguir leyendo ▼"}</span>
+              </button>
+
               <div style={{ marginTop: "1.75rem" }}>
                 <a
                   href={waLink("Hola Óptica Loja, quiero hacer una consulta sobre la atención para mi familia.")}
@@ -440,7 +460,10 @@ export function SobreNosotrosView() {
                     >
                       <div
                         className="doc-stacked-card__bg"
-                        style={{ backgroundImage: `url(${card.img})` }}
+                        style={{
+                          backgroundImage: `url(${card.img})`,
+                          backgroundPosition: card.focal || "center center",
+                        }}
                       />
                       <div className="doc-stacked-card__overlay" />
 
@@ -522,7 +545,13 @@ export function SobreNosotrosView() {
               {fullTeam.map((member, idx) => (
                 <div key={member.name} className="doc-team-card doc-team-card--peek" data-reveal="up" data-reveal-delay={String(idx * 80)}>
                   <div className="doc-team-card__img-wrap">
-                    <img src={member.img} alt={member.name} className="doc-team-card__img" loading="lazy" />
+                    <img
+                      src={member.img}
+                      alt={member.name}
+                      className="doc-team-card__img"
+                      style={{ objectPosition: member.focal || "center 20%" }}
+                      loading="lazy"
+                    />
                     <span className="related-service-card__badge" style={{ top: "0.75rem", left: "0.75rem" }}>
                       {member.badge}
                     </span>

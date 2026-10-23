@@ -46,33 +46,37 @@ import { waLink } from "@/lib/site";
 
 /* ── Tipado del slide ─────────────────────────────────────────────────── */
 interface SlideData {
-  /** Ruta de la imagen relativa a /public */
+  /** Ruta de la imagen para Desktop (horizontal) */
   image: string;
+  /** Ruta de la imagen para Móvil (vertical/cuadrada) opcional */
+  mobileImage?: string;
+  /** Punto focal de la imagen en desktop (ej: 'center 25%') */
+  focalDesktop?: string;
+  /** Punto focal de la imagen en móvil (ej: 'center 40%') */
+  focalMobile?: string;
   /** Texto alternativo de la imagen para accesibilidad */
   imageAlt: string;
   /** Etiqueta pequeña tipo badge encima del título */
   tag: string;
-  /** Título principal del slide (puede contener <br> visual mediante array) */
+  /** Título principal del slide */
   title: string;
   /** Subtítulo o descripción corta */
   subtitle: string;
   /** Texto del botón CTA principal */
   ctaLabel: string;
-  /** Href del botón CTA (puede ser WhatsApp o ruta interna) */
+  /** Href del botón CTA */
   ctaHref: string;
   /** Lado donde aparece el bloque de texto */
   align?: "left" | "right";
 }
 
 /* ── Configuración de slides ─────────────────────────────────────────── */
-/**
- * Edita este array para cambiar el contenido del slider.
- * Las imágenes deben existir en /public.
- * Los CTAs usan waLink() para generar el enlace de WhatsApp correcto.
- */
 const SLIDES: SlideData[] = [
   {
     image: "/servicio-examen-visual.jpg",
+    mobileImage: "/servicio-examen-visual.jpg",
+    focalDesktop: "center 25%",
+    focalMobile: "center 22%",
     imageAlt: "Optometrista realizando examen visual en Óptica Loja",
     tag: "ZEISS VISION EXPERT · LOJA",
     title: "Tu visión\nes nuestra prioridad",
@@ -83,6 +87,9 @@ const SLIDES: SlideData[] = [
   },
   {
     image: "/servicio-lentes-zeiss.jpg",
+    mobileImage: "/servicio-lentes-zeiss.jpg",
+    focalDesktop: "center 28%",
+    focalMobile: "center 30%",
     imageAlt: "Lentes de precisión alemana ZEISS en Óptica Loja",
     tag: "TECNOLOGÍA ALEMANA",
     title: "Lunas ZEISS\nde precisión",
@@ -93,6 +100,9 @@ const SLIDES: SlideData[] = [
   },
   {
     image: "/servicio-lentes-contacto.jpg",
+    mobileImage: "/servicio-lentes-contacto.jpg",
+    focalDesktop: "center 25%",
+    focalMobile: "center 20%",
     imageAlt: "Lentes de contacto y pupilentes en Óptica Loja",
     tag: "ADAPTACIÓN GUIADA",
     title: "Lentes de contacto\ncon prueba incluida",
@@ -183,15 +193,26 @@ export function HeroSlider() {
           className={`hs__slide ${idx === active ? "hs__slide--active" : ""}`}
           aria-hidden={idx !== active}
         >
-          <img
-            src={s.image}
-            alt={s.imageAlt}
-            className="hs__img"
-            /* Solo la imagen activa es eager, el resto lazy */
-            loading={idx === 0 ? "eager" : "lazy"}
-            fetchPriority={idx === 0 ? "high" : "auto"}
-            draggable={false}
-          />
+          <picture className="hs__picture">
+            {s.mobileImage && (
+              <source
+                media="(max-width: 768px)"
+                srcSet={s.mobileImage}
+              />
+            )}
+            <img
+              src={s.image}
+              alt={s.imageAlt}
+              className="hs__img"
+              style={{
+                "--focal-desktop": s.focalDesktop || "center 25%",
+                "--focal-mobile": s.focalMobile || s.focalDesktop || "center 22%",
+              } as React.CSSProperties}
+              loading={idx === 0 ? "eager" : "lazy"}
+              fetchPriority={idx === 0 ? "high" : "auto"}
+              draggable={false}
+            />
+          </picture>
           {/* Sutil viñeta en los bordes para resaltar las flechas y dots */}
           <div className="hs__subtle-vignette" aria-hidden="true" />
         </div>

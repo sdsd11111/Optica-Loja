@@ -18,71 +18,72 @@ const VISUAL_IMAGE: Record<string, string> = {
   alert:  "/images/Home/servicio-oftalmologico.jpg",
 };
 
-/* ─── Hero: imagen como background + overlay ──────────────────────── */
+/* ─── Hero estilo Home: imagen limpia + barra montada solapada ─────── */
 function ServiceHero({ data }: { data: ServicePage }) {
   const img = VISUAL_IMAGE[data.visual] ?? "/images/Home/servicio-examen.jpg";
   return (
-    <section
-      className="service-hero"
-      aria-label={`Hero: ${data.name}`}
-      style={{ backgroundImage: `url(${img})` }}
-    >
-      <div className="service-hero__overlay" aria-hidden="true" />
-      <div className="service-hero__optotypes" aria-hidden="true">
-        <div className="service-hero__opto-col service-hero__opto-left">
-          <span>E</span><span>F P</span><span>T O Z</span>
-          <span>L P E D</span><span>P E C F D</span>
-          <span>E D F C Z P</span>
+    <>
+      <section
+        className="hs service-hero-hs"
+        aria-label={`Banner: ${data.name}`}
+      >
+        <div className="hs__slide hs__slide--active">
+          <img
+            src={img}
+            alt={data.name}
+            className="hs__img"
+            loading="eager"
+            fetchPriority="high"
+          />
+          <div className="hs__subtle-vignette" aria-hidden="true" />
         </div>
-        <div className="service-hero__opto-col service-hero__opto-right">
-          <span>Z</span><span>O L</span><span>E I S S</span>
-          <span>V I S I O N</span><span>E X P E R T</span>
-          <span>2 0 / 2 0</span>
-        </div>
-      </div>
-      <div className="wrap service-hero__inner">
-        <div className="service-hero__content">
-          <Breadcrumbs items={[{ name: data.name }]} />
-          <span className="service-hero__badge">
-            <span className="dot-pulse" /> ÓPTICA LOJA · LOJA, ECUADOR
-          </span>
-          <h1 className="service-hero__h1">{data.h1}</h1>
-          <p className="service-hero__lead">
-            {data.lead.length > 160 ? data.lead.slice(0, 157) + "…" : data.lead}
-          </p>
-          <div className="service-hero__actions">
-            <a
-              className="btn btn--primary btn--lg"
-              href={waLink(`Hola Óptica Loja, quiero información sobre: ${data.cta.service}.`)}
-              target="_blank" rel="noopener noreferrer"
-            >
-              📲 Agendar por WhatsApp
-            </a>
-            <a className="btn btn--ghost-dark" href="#preguntas">
-              Preguntas frecuentes
-            </a>
-          </div>
-          <div className="service-hero__trust">
-            <div className="service-hero__trust-pill">
-              <strong>4.9 ★</strong><span>190+ reseñas</span>
-            </div>
-            <div className="service-hero__trust-divider" />
-            <div className="service-hero__trust-pill">
-              <strong>+25 años</strong><span>en Loja</span>
-            </div>
-            <div className="service-hero__trust-divider" />
-            <div className="service-hero__trust-pill">
-              <strong>ZEISS</strong><span>Vision Expert</span>
+      </section>
+
+      {/* Barra montada inferior exactamente igual a la Home */}
+      <section className="has-strip-container service-strip-container" aria-label={`Información de ${data.name}`}>
+        <div className="wrap">
+          <div className="has-card-pill">
+            {/* H1 centrado e imponente en azul marino oscuro */}
+            <h1 className="has-card-pill__title">{data.h1}</h1>
+
+            {/* Fila inferior: Gancho/descripción a la izquierda y Botón a la derecha */}
+            <div className="has-card-pill__body">
+              <p className="has-card-pill__desc">
+                <span className="desc-full">{data.lead}</span>
+                <span className="desc-mobile">
+                  {data.lead.length > 95 ? data.lead.slice(0, 92) + "…" : data.lead}
+                </span>
+              </p>
+
+              <div className="has-card-pill__action">
+                <a
+                  className="btn has-card-pill__btn"
+                  href={waLink(`Hola Óptica Loja, quiero agendar mi cita para: ${data.cta.service}.`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>Agendar cita</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
+
 /* ─── Señales ─────────────────────────────────────────────────────── */
 function SignalsSection({ data }: { data: ServicePage }) {
+  const [isExpandedMobile, setIsExpandedMobile] = useState(false);
+  const visibleThreshold = 2;
+  const hasMore = data.signals.length > visibleThreshold;
+
   return (
     <section className="sp-signals" aria-labelledby="signals-h">
       <div className="wrap">
@@ -92,14 +93,33 @@ function SignalsSection({ data }: { data: ServicePage }) {
               <span className="dot-pulse" /> SEÑALES DE ALERTA
             </span>
             <h2 id="signals-h" className="sp-signals__title">{data.signalsTitle}</h2>
-            <ul className="sp-signals__list">
-              {data.signals.map((s) => (
-                <li key={s} className="sp-signals__item">
-                  <span className="sp-signals__check">✓</span>
-                  <span>{s}</span>
-                </li>
-              ))}
+
+            <ul className={`sp-signals__list ${isExpandedMobile ? "is-expanded-mobile" : ""}`}>
+              {data.signals.map((s, idx) => {
+                const isHiddenOnMobile = !isExpandedMobile && idx >= visibleThreshold;
+                return (
+                  <li
+                    key={s}
+                    className={`sp-signals__item ${isHiddenOnMobile ? "sp-signals__item--collapsed-mobile" : ""}`}
+                  >
+                    <span className="sp-signals__check">✓</span>
+                    <span>{s}</span>
+                  </li>
+                );
+              })}
             </ul>
+
+            {hasMore && (
+              <button
+                type="button"
+                className="sp-signals__toggle-btn"
+                onClick={() => setIsExpandedMobile(!isExpandedMobile)}
+                aria-expanded={isExpandedMobile}
+              >
+                <span>{isExpandedMobile ? "Ver menos síntomas ▲" : `Ver ${data.signals.length - visibleThreshold} señales más ▼`}</span>
+              </button>
+            )}
+
             <a
               className="btn btn--primary"
               href={waLink(`Hola Óptica Loja, tengo síntomas: ${data.cta.service}.`)}
@@ -237,13 +257,20 @@ function BlocksSection({ data }: { data: ServicePage }) {
 }
 
 /* ─── Pasos: Acordeón fotográfico interactivo (Estilo GuíaLoja / paneles expandibles) ─── */
-const STEP_IMAGES = [
-  "/images/Home/somos-1.jpg",
-  "/images/Home/somos-2.jpg",
-  "/images/Home/servicio-examen.jpg",
-  "/images/Home/somos-3.jpg",
-  "/images/Home/somos-4.jpg",
-  "/images/Home/servicio-lentes-zeiss.jpg",
+
+/**
+ * Art Direction para los paneles de pasos:
+ * - image: ruta de la imagen
+ * - focal: punto focal para desktop (qué parte NO recortar)
+ * - focalMobile: punto focal para móvil (imagen apilada)
+ */
+const STEP_IMAGES_DATA = [
+  { image: "/images/Home/somos-2.jpg",          focal: "center 30%", focalMobile: "center 20%" },
+  { image: "/images/Home/somos-3.jpg",          focal: "center 25%", focalMobile: "center 20%" },
+  { image: "/images/Home/servicio-lentes-zeiss.jpg", focal: "center 35%", focalMobile: "center 25%" },
+  { image: "/images/Home/somos-4.jpg",          focal: "center 20%", focalMobile: "center 15%" },
+  { image: "/images/Home/servicio-examen.jpg",  focal: "center 28%", focalMobile: "center 20%" },
+  { image: "/images/Home/somos-1.jpg",          focal: "center 30%", focalMobile: "center 22%" },
 ];
 
 function StepsSection({ data }: { data: ServicePage }) {
@@ -266,14 +293,18 @@ function StepsSection({ data }: { data: ServicePage }) {
         <div className="sp-steps-accordion" data-reveal="up">
           {data.steps.map((s, idx) => {
             const isActive = activeStep === idx;
-            const bgImg = STEP_IMAGES[idx % STEP_IMAGES.length];
+            const imgData = STEP_IMAGES_DATA[idx % STEP_IMAGES_DATA.length];
             const numStr = String(idx + 1).padStart(2, "0");
 
             return (
               <div
                 key={s.title}
                 className={`sp-steps-panel ${isActive ? "is-expanded" : ""}`}
-                style={{ backgroundImage: `url(${bgImg})` }}
+                style={{
+                  backgroundImage: `url(${imgData.image})`,
+                  "--step-focal": imgData.focal,
+                  "--step-focal-mobile": imgData.focalMobile,
+                } as React.CSSProperties}
                 onMouseEnter={() => setActiveStep(idx)}
                 onClick={() => setActiveStep(idx)}
                 role="button"

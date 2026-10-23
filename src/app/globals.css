@@ -868,14 +868,28 @@ p { margin: 0 0 1em; }
   }
 }
 
+.hs__picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
 .hs__img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 25%;
+  object-position: var(--focal-desktop, center 25%);
   display: block;
+}
+
+@media (max-width: 768px) {
+  .hs__img {
+    object-position: var(--focal-mobile, center 22%);
+  }
 }
 
 /* Sutil viñeta en extremos para garantizar contraste de controles sin tapar imagen */
@@ -1063,7 +1077,8 @@ p { margin: 0 0 1em; }
 
 /* Responsive: Móvil y Tablet */
 @media (max-width: 900px) {
-  .hs {
+  .hs,
+  .service-hero-banner {
     height: clamp(420px, 80vw, 560px);
   }
   .has-strip-container {
@@ -1075,7 +1090,8 @@ p { margin: 0 0 1em; }
 }
 
 @media (max-width: 640px) {
-  .hs {
+  .hs,
+  .service-hero-banner {
     height: clamp(490px, 115vw, 600px);
   }
   .desc-full { display: none; }
@@ -1100,11 +1116,12 @@ p { margin: 0 0 1em; }
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08) !important;
   }
   .has-card-pill__title {
-    font-size: 1.6rem !important;
+    font-size: clamp(1.05rem, 4.2vw, 1.55rem) !important;
     font-weight: 900 !important;
     letter-spacing: -0.025em !important;
     margin: 0 !important;
-    line-height: 1.1 !important;
+    line-height: 1.15 !important;
+    text-wrap: balance;
   }
   .has-card-pill__body {
     display: flex !important;
@@ -1805,11 +1822,21 @@ p { margin: 0 0 1em; }
   opacity: 1;
 }
 
+/* Overlay transparente — hace que todo el mapa sea clickeable */
+.ftr__map-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  cursor: pointer;
+  background: transparent;
+}
+
 /* Botón Flotante Cómo Llegar */
 .ftr__croquis-btn {
   position: absolute;
   bottom: 8px;
   right: 8px;
+  z-index: 3;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -3547,161 +3574,37 @@ p { margin: 0 0 1em; }
    SERVICE PAGE TEMPLATE — Plantilla completa para páginas de servicio
    ============================================================ */
 
-/* ── 1. SERVICE HERO ─────────────────────────────────────── */
-.service-hero {
+/* ── 1. SERVICE HERO BANNER (Estilo GMO limpio como la Home) ── */
+.service-hero-banner {
   position: relative;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  /* La imagen se pasa como inline style: backgroundImage */
-  background-color: #0a1f2e; /* fallback mientras carga */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  padding: 8rem 0 5rem;
-}
-
-/* Optotipos decorativos de fondo */
-.service-hero__optotypes {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.service-hero__opto-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 2rem 1.5rem;
-  font-family: var(--font-display), monospace;
-  font-weight: 700;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.07);
-  font-size: clamp(0.55rem, 1.2vw, 0.9rem);
-  user-select: none;
-  line-height: 1.2;
-}
-
-.service-hero__opto-col span {
-  display: block;
-  text-align: center;
-  transition: color 0.3s;
-}
-
-.service-hero__opto-left { transform: translateX(-5%); }
-.service-hero__opto-right { transform: translateX(5%); text-align: right; }
-
-/* Overlay: capa oscura encima de la foto para legibilidad del texto */
-.service-hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(5, 20, 35, 0.88) 0%,
-    rgba(10, 31, 46, 0.75) 50%,
-    rgba(15, 52, 71, 0.65) 100%
-  );
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Escudo de legibilidad central (ya no se usa el antiguo shield) */
-
-.service-hero__inner {
-  position: relative;
-  z-index: 2;
-  /* Contenido centrado horizontalmente, máx 760px de ancho */
-  display: flex;
-  justify-content: center;
-}
-
-.service-hero__content {
-  max-width: 760px;
   width: 100%;
+  height: clamp(380px, 44vw, 560px);
+  overflow: clip;
+  background: var(--ink);
+  user-select: none;
 }
 
-.service-hero__badge-row {
-  margin-bottom: 1.2rem;
+.service-hero-banner__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
 }
 
-.service-hero__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.85);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.4rem 0.9rem;
-  border-radius: 100px;
-  backdrop-filter: blur(8px);
-}
-
-.service-hero__h1 {
-  font-size: clamp(1.9rem, 4.5vw, 3.4rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1.08;
-  color: #fff;
-  margin-bottom: 1.2rem;
-  text-wrap: balance;
-}
-
-.service-hero__lead {
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
-  color: rgba(255,255,255,0.78);
-  line-height: 1.65;
-  margin-bottom: 2rem;
-  max-width: 60ch;
-  font-weight: 400;
-}
-
-.service-hero__actions {
-  display: flex;
-  gap: 0.9rem;
-  flex-wrap: wrap;
+.service-strip-container {
   margin-bottom: 2rem;
 }
 
-.service-hero__trust {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+.service-strip__breadcrumbs {
+  margin-bottom: 0.35rem;
 }
 
-.service-hero__trust-pill {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
-
-.service-hero__trust-pill strong {
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.service-hero__trust-pill span {
-  color: rgba(255,255,255,0.6);
-  font-size: 0.72rem;
-  line-height: 1;
-}
-
-.service-hero__trust-divider {
-  width: 1px;
-  height: 2rem;
-  background: rgba(255,255,255,0.2);
+.service-strip__breadcrumbs .crumbs {
+  font-size: 0.8rem;
+  margin-bottom: 0;
 }
 
 /* ── 2. SEÑALES (SP-SIGNALS) ─────────────────────────────── */
@@ -3763,6 +3666,27 @@ p { margin: 0 0 1em; }
   font-size: 0.75rem;
   font-weight: 800;
   margin-top: 0.1rem;
+}
+
+/* Botón acordeón para móvil (oculto en desktop) */
+.sp-signals__toggle-btn {
+  display: none;
+  background: #f0f7fc;
+  color: var(--color-primary);
+  border: 1.5px dashed var(--color-primary);
+  border-radius: 0.75rem;
+  padding: 0.65rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: all 0.2s ease;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.sp-signals__toggle-btn:hover {
+  background: #e1effa;
 }
 
 /* Tarjeta lateral */
@@ -4154,17 +4078,83 @@ p { margin: 0 0 1em; }
 
 @media (max-width: 860px) {
   .sp-interactive-bento {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
   }
+
+  /* 1. Primero va la imagen y el detalle del servicio seleccionado */
   .sp-bento__detail-panel {
+    order: 1;
     grid-template-columns: 1fr;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(15, 52, 71, 0.08);
   }
+
   .sp-bento__img-cover {
-    height: 180px;
-    min-height: 180px;
+    height: 200px;
+    min-height: 200px;
   }
+
+  .sp-bento__detail-content {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .sp-bento__title {
+    font-size: 1.25rem;
+  }
+
+  .sp-bento__text {
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+
   .sp-bento__meta-grid {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* 2. Luego van los puntos / opciones como cuadros compactos (grid de 2 columnas) */
+  .sp-bento__nav {
+    order: 2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+
+  .sp-bento__nav-item {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0.85rem 0.9rem;
+    min-height: 95px;
+    border-radius: 0.85rem;
+    gap: 0.4rem;
+  }
+
+  .sp-bento__nav-item:hover,
+  .sp-bento__nav-item.is-active {
+    transform: none; /* Sin saltos de posición en móvil */
+  }
+
+  .sp-bento__nav-num {
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
+  .sp-bento__nav-title {
+    font-size: 0.82rem;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .sp-bento__nav-hint {
+    font-size: 0.7rem;
   }
 }
 
@@ -4227,7 +4217,8 @@ p { margin: 0 0 1em; }
   border-radius: 1.25rem;
   overflow: hidden;
   background-size: cover;
-  background-position: center;
+  /* Punto focal configurable por panel via variable CSS (--step-focal) */
+  background-position: var(--step-focal, center 20%);
   cursor: pointer;
   transition: flex 0.55s cubic-bezier(0.25, 1, 0.5, 1), transform 0.3s ease;
   border: 1.5px solid var(--color-border);
@@ -4381,12 +4372,16 @@ p { margin: 0 0 1em; }
   }
   .sp-steps-panel {
     flex: none;
-    height: 90px;
+    /* Altura generosa para que la imagen sea legible en móvil */
+    height: 120px;
+    /* En móvil siempre mostramos la parte superior de la foto (personas/equipo) */
+    background-position: var(--step-focal-mobile, var(--step-focal, center 15%));
   }
   .sp-steps-panel.is-expanded {
     flex: none;
     height: auto;
-    min-height: 280px;
+    min-height: 300px;
+    background-position: var(--step-focal, center 20%);
   }
   .sp-steps-panel__collapsed-label {
     flex-direction: row;
@@ -4761,37 +4756,6 @@ p { margin: 0 0 1em; }
 
 /* ── RESPONSIVE MOBILE ───────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Hero */
-  .service-hero {
-    min-height: auto;
-    padding: 5rem 0 3.5rem;
-  }
-
-  .service-hero__opto-col {
-    font-size: 0.5rem;
-    padding: 1rem 0.5rem;
-    letter-spacing: 0.2em;
-    gap: 0.4rem;
-  }
-
-  .service-hero__h1 {
-    font-size: clamp(1.6rem, 7vw, 2.2rem);
-  }
-
-  .service-hero__lead {
-    font-size: 0.95rem;
-  }
-
-  .service-hero__actions {
-    flex-direction: column;
-  }
-
-  .service-hero__trust {
-    gap: 0.6rem;
-  }
-
-  .service-hero__trust-divider { height: 1.5rem; }
-
   /* Señales */
   .sp-signals {
     padding: 3.5rem 0;
@@ -4800,6 +4764,18 @@ p { margin: 0 0 1em; }
   .sp-signals__inner {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  /* Acordeón en móvil para Señales */
+  .sp-signals__item--collapsed-mobile {
+    display: none;
+  }
+
+  .sp-signals__toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
   }
 
   .sp-signals__card-stats {
@@ -5178,7 +5154,7 @@ p { margin: 0 0 1em; }
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  max-width: 760px;
+  max-width: 100%;
   margin: 0 auto 1.5rem;
 }
 
@@ -5223,16 +5199,19 @@ p { margin: 0 0 1em; }
 
 .doc-pillar-slider-track {
   display: flex;
-  width: 100%;
   gap: 1.25rem;
-  /* No transform: el scroll lo maneja el contenedor */
+  width: 100%;
+  padding: 0.5rem 0.25rem;
 }
 
-.doc-pillar-slide--two-col {
-  flex: 0 0 calc(50% - 0.625rem);
-  min-width: calc(50% - 0.625rem);
-  box-sizing: border-box;
+.doc-pillar-slide--two-col,
+.doc-pillar-slide--peek {
+  /* Se muestra 1 card principal ocupando ~88% y asoma un poquito de la siguiente (~12%) */
+  flex: 0 0 calc(100% - 80px);
+  min-width: calc(100% - 80px);
+  max-width: calc(100% - 80px);
   scroll-snap-align: start;
+  box-sizing: border-box;
 }
 
 .doc-pillar-card {
@@ -5650,29 +5629,31 @@ p { margin: 0 0 1em; }
 
 /* Responsive móvil marca personal */
 @media (max-width: 860px) {
-  /* 1. Hero: reducir padding en móvil e imagen primero */
+  /* 1. Hero: quitar espacio de más en móvil y ocultar los badges */
   .doc-hero {
-    padding: 6rem 0 3rem;
+    padding: 2.25rem 0 2.5rem;
   }
   .doc-hero__grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
   .doc-hero__photo-col {
-    order: -1; /* La foto del doctor va primero */
+    order: -1; /* La foto va primero */
   }
   .doc-hero__card {
-    max-width: 300px;
+    max-width: 290px;
     margin: 0 auto;
   }
   .doc-hero__img {
-    height: 360px;
+    height: 320px;
+    object-position: center 20%;
   }
   .doc-hero__info {
     text-align: center;
   }
+  /* Quitar los 4 badges de texto en móvil a pedido del usuario */
   .doc-hero__badges {
-    justify-content: center;
+    display: none;
   }
   .doc-hero__actions {
     justify-content: center;
@@ -5691,13 +5672,44 @@ p { margin: 0 0 1em; }
     border-bottom: none;
   }
 
-  /* 3. En Consulta */
+  /* 3. Misión ('¿Por qué las familias eligen Óptica Loja?') */
   .doc-working-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
+  }
+  .doc-working-photo-wrap {
+    order: -1;
+  }
+  .doc-working-img {
+    height: 240px;
+    object-position: center 25%;
+  }
+  /* En móvil colapsamos los bullets de misión salvo que se presione 'Seguir leyendo' */
+  .doc-working-bullets:not(.is-expanded-mobile) li {
+    display: none;
+  }
+  .doc-mision-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: #f0f7fc;
+    color: var(--color-primary);
+    border: 1.5px dashed var(--color-primary);
+    border-radius: 0.75rem;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+    transition: all 0.2s ease;
+  }
+  .doc-mision-toggle-btn:hover {
+    background: #e1effa;
   }
 
-  /* 4. Pilares: En móvil card completa con peek (84%) y asoma la siguiente */
+  /* 4. Pilares: En móvil 1 card principal (~85%) y asoma un poquito de la otra (~15%) para invitar al swipe o flechas */
   .doc-pillar-carousel-wrap {
     gap: 0.5rem;
     max-width: 100%;
@@ -5707,12 +5719,13 @@ p { margin: 0 0 1em; }
   }
   .doc-pillar-slide--two-col,
   .doc-pillar-slide--peek {
-    flex: 0 0 84%;
-    min-width: 260px;
-    scroll-snap-align: center;
+    flex: 0 0 85%;
+    min-width: 85%;
+    max-width: 85%;
+    scroll-snap-align: start;
   }
   .doc-pillar-card {
-    padding: 1.75rem 1.4rem;
+    padding: 1.6rem 1.3rem;
   }
   .doc-carousel-arrow {
     width: 2.4rem;
@@ -5720,7 +5733,7 @@ p { margin: 0 0 1em; }
     font-size: 1.1rem;
   }
 
-  /* 5. Trayectoria: Stack responsivo en móvil con tap reveal */
+  /* 5. Trayectoria: Stack responsivo en móvil con tap reveal y encuadre fotográfico */
   .doc-card-stack-box {
     max-width: 320px;
     padding-top: 3.5rem;
@@ -5765,7 +5778,7 @@ p { margin: 0 0 1em; }
     line-height: 1.55;
   }
 
-  /* 6. El equipo: SLIDE CON PEEK, SWIPE Y CONTROLES EN MÓVIL */
+  /* 6. El equipo: SLIDE CON PEEK, SWIPE Y ENCUADRE DE RETRATO */
   .doc-team-slider-wrap {
     width: 100%;
     position: relative;
@@ -5788,6 +5801,14 @@ p { margin: 0 0 1em; }
     max-width: 320px;
     scroll-snap-align: center;
   }
+  .doc-team-card__img-wrap {
+    height: 250px;
+  }
+  .doc-team-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   .doc-team-slider-controls {
     display: flex;
     align-items: center;
@@ -5797,10 +5818,22 @@ p { margin: 0 0 1em; }
   }
 }
 
-/* En desktop ocultamos los controles del slider del equipo si el grid cabe */
+/* En desktop: el slider de pilares se mantiene como carrusel (1 card principal + asoma la siguiente), con flechas y dots */
 @media (min-width: 861px) {
   .doc-team-slider-controls {
     display: none;
+  }
+
+  .doc-pillar-carousel-wrap {
+    max-width: 900px;
+  }
+
+  .doc-pillar-slide--peek,
+  .doc-pillar-slide--two-col {
+    flex: 0 0 calc(100% - 100px);
+    min-width: calc(100% - 100px);
+    max-width: calc(100% - 100px);
+    scroll-snap-align: start;
   }
 }
 

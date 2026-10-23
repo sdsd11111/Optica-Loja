@@ -13,8 +13,8 @@ const branches = [
     city: "Loja, Ecuador",
     hours: "Lun a Sáb 08:30 – 19:00",
     phone: "072 586217",
-    embedUrl: "https://maps.google.com/maps?q=-3.99612,-79.20452&hl=es&z=17&output=embed",
-    mapsUrl: "https://maps.google.com/?q=Optica+Loja+Calle+10+de+Agosto+Loja+Ecuador",
+    embedUrl: "https://maps.google.com/maps?q=-3.996876,-79.1997391&hl=es&z=18&output=embed",
+    mapsUrl: "https://maps.app.goo.gl/fcBPP4TYbzVxaWks9",
   },
   {
     id: "24demayo",
@@ -24,8 +24,8 @@ const branches = [
     city: "Loja, Ecuador",
     hours: "Lun a Sáb 08:30 – 19:00",
     phone: "072 586217",
-    embedUrl: "https://maps.google.com/maps?q=-3.99395,-79.20230&hl=es&z=17&output=embed",
-    mapsUrl: "https://maps.app.goo.gl/gqig9t1AZoehw1yR8",
+    embedUrl: "https://maps.google.com/maps?q=-3.9961444,-79.1981166&hl=es&z=18&output=embed",
+    mapsUrl: "https://maps.app.goo.gl/AAJb4B2317QnGB9T8",
   },
 ];
 
@@ -209,6 +209,15 @@ export function Footer() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="ftr__map-iframe"
+              />
+
+              {/* Overlay clickeable sobre el mapa — abre Google Maps */}
+              <a
+                href={activeBranch.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ftr__map-overlay"
+                aria-label={`Abrir ${activeBranch.name} en Google Maps`}
               />
 
               {/* Botón flotante para abrir ruta completa en Google Maps */}
