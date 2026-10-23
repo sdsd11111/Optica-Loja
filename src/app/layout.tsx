@@ -48,19 +48,19 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${site.url}/logo-optica.jpg`,
-        width: 200,
-        height: 200,
+        url: `${site.url}/optica-logo-1200x630.jpg`,
+        width: 1200,
+        height: 630,
         alt: "Óptica Loja - Lo mejor para tus ojos",
         type: "image/jpeg",
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Óptica Loja | Lentes ZEISS · Examen Visual · Diagnóstico Oftalmológico en Loja",
     description: "Centro óptico y oftalmológico en Loja, Ecuador. Examen visual completo, lentes alemanes ZEISS, terapia visual, diagnóstico oftalmológico y taller propio. ¡Lo mejor para tus ojos!",
-    images: [`${site.url}/logo-optica.jpg`],
+    images: [`${site.url}/optica-logo-1200x630.jpg`],
   },
 };
 
