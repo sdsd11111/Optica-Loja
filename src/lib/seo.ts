@@ -19,14 +19,14 @@ export function buildMeta({ title, description, path, type = "website", absolute
       type,
       images: [
         {
-          url: "https://optica-loja.vercel.app/logo-optica.jpg",
-          width: 150,
-          height: 150,
+          url: `${site.url}/optica-logo-1200x630.jpg`,
+          width: 1200,
+          height: 630,
           alt: site.name,
           type: "image/jpeg",
         },
       ],
     },
-    twitter: { card: "summary", title: fullTitle, description, images: ["https://optica-loja.vercel.app/logo-optica.jpg"] },
+    twitter: { card: "summary_large_image", title: fullTitle, description, images: [`${site.url}/optica-logo-1200x630.jpg`] },
   };
 }
